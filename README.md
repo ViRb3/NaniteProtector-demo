@@ -9,32 +9,32 @@
                           written in Kotlin
 ```
 
-# Features
+## Features
 - Constant encryption (strings, integers, booleans…)
 - Constant mutation
 - Advanced control flow obfuscation
 - Anti-tamper, anti-debug and anti-decompilation
 
-# Technical details
+## Technical details
 
-## Control flow
+### Control flow
 Nanite generates non-linear code flow, making it impossible to produce readable decompilation. This is achieved by creaing fake jumps across code blocks, where the correct flow is only determined at runtime. This way a decompiler is forced to display all code flows, resulting in a 'spaghetti' output.
 
-## Smart analysis to prevent hard obfuscation of looping code
+### Smart analysis to prevent hard obfuscation of looping code
 It is no secret that obfuscation impacts performance compared to clean, unprotected code. It is however possible to minimize this effect by applying clever optimizations. One such step is to avoid overprotecting looping code, which can cause serious performance degradation. Nanite achieves this by analyzing the code flow before applying any protection and tweaking its level dynamically.
 
-## Constant encryption
+### Constant encryption
 Each constant is encrypted with a unique key, dependent on the integrity of its parent method. All constants are then encrypted again and placed in a resource, with its key dependent on the integrity of all classes in the package.
 
-## Constant mutation where encryption is inapplicable
+### Constant mutation where encryption is inapplicable
 Control flow depends on constant encryption. Constant encryption depends on a special class created by the obfuscator, regarded as its core. This core cannot be protected by itself (or an infinite loop would occur), so constant mutation is used instead, providing another, different layer of protection.
 
-## Anti-debug and anti-decompilation
+### Anti-debug and anti-decompilation
 All along the core and package methods are implemented custom checks and tricks to protect against various attack vectors and automated tools.
 
-# Sample (double cflow pass)
+## Sample (double cflow pass)
 
-## Before:
+### Before:
 ```java
 public static void main(String[] args) throws InterruptedException
 {
@@ -59,7 +59,7 @@ public static void main(String[] args) throws InterruptedException
 }
 ```
 
-## After:
+### After:
 ```java
 public static void main(final String[] array) throws InterruptedException {
 Label_0171_Outer:
