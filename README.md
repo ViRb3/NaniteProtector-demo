@@ -32,7 +32,7 @@ Control flow depends on constant encryption. Constant encryption depends on a sp
 ### Anti-debug and anti-decompilation
 All along the core and package methods are implemented custom checks and tricks to protect against various attack vectors and automated tools.
 
-## Sample (double cflow pass)
+## Sample
 
 ### Before:
 ```java
@@ -59,7 +59,7 @@ public static void main(String[] args) throws InterruptedException
 }
 ```
 
-### After:
+### After (double cflow pass):
 ```java
 public static void main(final String[] array) throws InterruptedException {
 Label_0171_Outer:
